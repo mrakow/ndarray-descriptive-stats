@@ -1,0 +1,39 @@
+{
+  "name": "ndarray-descriptive-stats",
+  "version": "0.0.0",
+  "description": "Descriptive statistics for ndarrays",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "cwise": "^1.0.8"
+  },
+  "devDependencies": {
+    "ndarray": "^1.0.18",
+    "tape": "^4.2.2"
+  },
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mrakow/ndarray-descriptive-stats.git"
+  },
+  "keywords": [
+    "descriptive",
+    "statistics",
+    "mean",
+    "standard",
+    "deviation",
+    "average",
+    "ndarray"
+  ],
+  "author": "M Rakow",
+  "license": "MIT",
+  "browserify": {
+    "transform": [
+      "cwise"
+    ]
+  }
+}
