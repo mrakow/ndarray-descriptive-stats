@@ -4,7 +4,7 @@ var ndarray = require('ndarray')
 var test = require('tape')
 
 test('givenData', function (t) {
-  var givenData = [
+  var cases = [
     [
       ndarray([0, 0, 0]),
       {n: 3, mean: 0, sigma: 0, s: 0, min: 0, max: 0, sum: 0}
@@ -20,11 +20,40 @@ test('givenData', function (t) {
     ], [
       ndarray([0]),
       {n: 1, mean: 0, sigma: 0, s: null, min: 0, max: 0, sum: 0}
+    ], [
+      ndarray([]),
+      {n: 0}
     ]
   ]
 
-  for (let i = 0; i < givenData.length; i++) {
-    t.deepEqual(dStats(givenData[i][0]), givenData[i][1], 'given case ' + i)
+  for (let i = 0; i < cases.length; i++) {
+    t.deepEqual(dStats(cases[i][0]), cases[i][1], 'given case ' + i)
+  }
+  t.end()
+})
+
+test('inputFormats', function (t) {
+  var validInputs = [
+    ndarray([]),
+    ndarray([0]),
+    ndarray([0, 0]),
+    ndarray([0, 0, 0, 0], [2, 2])
+  ]
+  var invalidInputs = [
+    [],
+    0,
+    [0],
+    [0, 0],
+    '0, 0',
+    {0: 0, 1: 0},
+    [[0, 0], [0, 0]],
+    'hello'
+  ]
+  for (let i = 0; i < validInputs.length; i++) {
+    t.doesNotThrow(function () { dStats(validInputs[i]) })
+  }
+  for (let i = 0; i < invalidInputs.length; i++) {
+    t.throws(function () { dStats(invalidInputs[i]) })
   }
   t.end()
 })

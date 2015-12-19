@@ -25,6 +25,7 @@ var dStats = cwise({
     var n = this.n
     var stats = {}
     stats.n = n
+    if (stats.n === 0) return stats
     stats.mean = this.sum / n
     stats.sigma = Math.sqrt((this.sumOfSqs - (this.sum * this.sum) / n) / n)
     if (n === 1) {
