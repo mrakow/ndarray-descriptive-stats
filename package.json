@@ -1,6 +1,6 @@
 {
   "name": "ndarray-descriptive-stats",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Descriptive statistics for ndarrays",
   "main": "index.js",
   "directories": {
